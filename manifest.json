@@ -1,142 +1,35 @@
 {
   "manifest_version": 3,
-  "name": "Elite Extension",
-  "description": "An ultra-optimized, high-performance Chrome extension with modular design, secure handling, and scalable infrastructure.",
-  "version": "1.0.0",
-  "author": "A Genius Developer",
+  "name": "User Preferences Extension",
+  "description": "An extension to manage user preferences and personalize webpage appearance.",
+  "version": "1.0",
   "permissions": [
     "storage",
-    "tabs",
-    "notifications",
-    "identity",
     "activeTab",
-    "bookmarks",
-    "clipboardWrite",
-    "cookies",
-    "webNavigation",
-    "webRequest",
-    "webRequestBlocking",
-    "host_permissions", [
-      "http://*/*",
-      "https://*/*",
-      "file:///*"
-    ]
+    "tabs"
   ],
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
-    },
-    "default_title": "Click to interact with Elite Extension"
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.example.com/*",
-        "https://*.example.org/*"
-      ],
-      "js": ["content.js"],
-      "css": ["content.css"],
-      "run_at": "document_end"
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "css": ["styles/main.css"]
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "icons/*.png",
-        "styles/*.css"
-      ],
-      "matches": ["<all_urls>"]
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
-  ],
-  "options_page": "options.html",
-  "chrome_url_overrides": {
-    "newtab": "newtab.html"
-  },
-  "alarms": {
-    "on_alarm": {
-      "alarmName": "syncData",
-      "intervalInMinutes": 30
-    }
-  },
-  "oauth2": {
-    "client_id": "YOUR_OAUTH_CLIENT_ID",
-    "scopes": [
-      "email",
-      "profile",
-      "https://www.googleapis.com/auth/drive.file"
-    ]
-  },
-  "declarative_content": {
-    "actions": [
-      {
-        "type": "showPageAction",
-        "pageUrl": "https://www.example.com/*"
-      }
-    ]
   },
   "icons": {
-    "16": "icons/icon-16.png",
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
-  "default_locale": "en",
-  "i18n": {
-    "messages": {
-      "extension_name": {
-        "message": "Elite Extension",
-        "description": "The name of the extension"
-      },
-      "extension_description": {
-        "message": "A cutting-edge Chrome extension designed for performance, security, and user satisfaction.",
-        "description": "Description of the extension's purpose"
-      }
-    }
-  },
-  "update_url": "https://clients2.google.com/service/update2/crx",
-  "content_security_policy": {
-    "extension_pages": {
-      "script-src": ["'self'"],
-      "object-src": ["'self'"],
-      "style-src": ["'self'", "'unsafe-inline'"],
-      "img-src": ["'self'", "https://example.com"],
-      "frame-src": ["'self'"]
-    }
-  },
-  "runtime": {
-    "onInstalled": {
-      "message": "Elite Extension installed successfully. Enjoy the power of next-gen technology!"
-    },
-    "onStartup": {
-      "message": "Elite Extension has started. Your tools are now at your fingertips!"
-    }
-  },
-  "tabs": {
-    "action": {
-      "type": "showPageAction",
-      "urlPattern": "https://*.example.com/*"
-    }
-  },
-  "api": {
-    "fetchData": {
-      "url": "https://api.example.com/data",
-      "method": "GET",
-      "headers": {
-        "Authorization": "Bearer {ACCESS_TOKEN}"
-      }
-    },
-    "cacheData": {
-      "strategy": "cache-first"
-    },
-    "indexedDB": {
-      "database": "extension_data",
-      "objectStores": ["userPreferences", "syncData"]
-    }
-  }
+  "default_locale": "en"
 }

@@ -1,0 +1,11 @@
+{
+    "extension_name": {
+      "message": "Elite Extension",
+      "description": "The official name of the Chrome extension"
+    },
+    "extension_description": {
+      "message": "A high-performance Chrome extension optimized for security, user experience, and scalability.",
+      "description": "A brief description of the extension's core functionality and purpose, focusing on its advanced features."
+    }
+  }
+  
